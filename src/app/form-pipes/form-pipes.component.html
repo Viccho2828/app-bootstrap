@@ -1,0 +1,54 @@
+<h1>{{fechaActual | date:'short'}}</h1>
+<button class="btn btn-primary" (click)="mostrarAlumnos()">Mostrar Alumnos</button>
+<button class="btn btn-primary" (click)="mostrarCursos()">Mostrar Cursos</button>
+@if (mostrarResultado==1) {
+    <h1>Lista de Alumnos</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (itemAlumno of alumnos; track $index) {
+            <tr>
+                <td>{{itemAlumno.nombre | uppercase }}</td>
+            </tr>
+        }
+
+    </tbody>
+  </table>
+}
+
+
+
+
+<hr/>
+
+
+
+@if (mostrarResultado==0) {
+    <h1>Lista de Cursos</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Curso</th>
+            <th scope="col">Profesor</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for (itemcurso of cursos; track $index) {
+                <tr>
+                    <td>{{itemcurso.nombres | uppercase }}</td>
+                    <td>{{itemcurso.profesor | lowercase }}</td>
+                    <td>{{itemcurso.precio | currency:"S/."}} </td>
+                </tr>
+            }
+    
+        </tbody>
+      </table>
+
+}
+
+
